@@ -1,0 +1,26 @@
+#Instalar Apache
+sudo apt install apache2
+#Instalar Apache
+sudo apt install apache2
+
+#Configurações do apache apos criar o projeto laravel
+sudo nano /etc/apache2/sites-available/nome_dominio
+
+#Configurações dentro do arquivo nome_dominio
+
+<VirtualHost *:80>
+ServerName nome_dominio
+
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www/html/diretorio_projeto_laravel_criado
+
+<Directory /var/www/html/diretorio_projeto_laravel_criado>
+AllowOverride All
+</Directory>
+
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+#Espelhar o nome_dominio de sites-available para site-enable
+sudo ln -s /etc/apache2/sites-available/nome_dominio /etc/apache2/sites-enabled/nome_dominio
